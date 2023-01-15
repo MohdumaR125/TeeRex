@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import Cards from "../Components/Cards"
+import Filters from "../Components/Filter"
 import Navbar from "../Components/Navbar"
 import Search from "../Components/Search"
 import { handleProductData } from "../Redux/action"
@@ -27,6 +28,7 @@ const ProductPage = () =>{
         <>
         <Navbar/>
         <Search />
+        <Filters/>
         <Cards />   
         </>
     )
