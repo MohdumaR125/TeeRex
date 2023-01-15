@@ -1,20 +1,25 @@
-import { handle_Hide } from "./actionType";
-import { Columns } from "../components/Column";
+import { product_Data,display_Data } from "./actionType";
 
 const initState={
-    Columns
+    productData :[],
+    displayData : []
 }
 
 const reducer = (state=initState,action) => {
     switch(action.type){
 
-        case (handle_Hide):{
-           const objIndex = Columns.findIndex((obj => obj.Header ===action.payload.Header ));
-           const newArr=Columns;
-           newArr[objIndex]=action.payload;
+        case (product_Data):{
+           
             return {
                 ...state,
-                Columns:[...newArr]
+                productData:action.payload
+            }
+        }
+        case (display_Data):{
+           
+            return {
+                ...state,
+                displayData:action.payload
             }
         }
         

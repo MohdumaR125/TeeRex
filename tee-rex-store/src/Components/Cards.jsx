@@ -1,9 +1,14 @@
-const Cards = (props) =>{
-    const {data}=props;
-    console.log(data[0])
+import { useEffect } from "react";
+import { useState } from "react"
+import { useSelector } from "react-redux"
 
-    return(
-        <>
+const Cards = () =>{
+    let data=useSelector(state=>state.displayData)
+    
+    useEffect(()=>{},[data])
+
+        return(
+            <>
         <div>
             {data.map((el)=>(
                 <div key={el.id+el.imageURL}>
@@ -18,5 +23,6 @@ const Cards = (props) =>{
         </div>
         </>
     )
+
 }
 export default Cards

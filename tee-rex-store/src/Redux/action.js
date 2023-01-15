@@ -1,10 +1,16 @@
-import { handle_Hide } from "./actionType";
+import { product_Data, display_Data } from "./actionType"
 
 
-const handlehide = (payload) =>{
+const handleProductData = (payload) =>{
    return {
-    type: handle_Hide,
+    type: product_Data,
     payload,
    }
 }
-export {handlehide}
+const handleDisplayData = (payload) =>{
+   return {
+    type: display_Data,
+    payload,
+   }
+}
+export {handleProductData,handleDisplayData}
