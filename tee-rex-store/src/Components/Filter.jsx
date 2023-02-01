@@ -3,31 +3,39 @@ import { useDispatch, useSelector } from "react-redux"
 import { handleDisplayData } from "../Redux/action"
 
 const Filters = () =>{
-    const [filterData,setFilterData]= useState([])
     const [originalData,setOriginalData]= useState([])
-    let newdata
-    const data = useSelector(state=>state.displayData)
+    const [newData,setNewData]= useState([])
+    let data = useSelector(state=>state.productData)
+    const [filterData,setFilterData]= useState([])
     const dispatch=useDispatch();
+
+    const getData = ()=>{
+        setOriginalData(data)
+        setNewData(data)
+
+    }
+    
     useEffect(()=>{
-     newdata=data;
-
-},[])
-
-
-
-        const applyColor = (e) =>{
-        const colorData=newdata.filter((el)=>{
-            return el.color.toLowerCase() === e.target.name
+        getData()
+    },[data,filterData])
+    
+    
+    
+    const applyColor = (e) =>{
+            console.log(originalData)
+            console.log("clicked color")
+        const colorData=newData.filter((el)=>{
+            return el.color === e.target.name
         })
         console.log(colorData)
-            setFilterData([...filterData,...colorData])
+            setFilterData(filterData=>[...filterData,...colorData])
+            console.log(filterData)
             dispatch(handleDisplayData(filterData))
-        }
+         }
         const applyGender = (e) =>{
             console.log(e.target.checked)
             console.log(e.target.name)
-       
-    }
+       }
     const applyPrice = (e) =>{
             console.log(e.target.checked)
             console.log(e.target.name)
@@ -42,13 +50,13 @@ const Filters = () =>{
         <>
         <div>
             <div>Colour
-                <input type="checkbox" name="red"  onClick={applyColor} />
+                <input type="checkbox" name="Red"  onClick={applyColor} />
                 <label htmlFor="red">Red</label>
-                <input type="checkbox" name="blue" id="" onClick={applyColor}/>
+                <input type="checkbox" name="Blue" id="" onClick={applyColor}/>
                 <label htmlFor="">Blue</label>
-                <input type="checkbox" name="green" id="" onClick={applyColor}/>
+                <input type="checkbox" name="Green" id="" onClick={applyColor}/>
                 <label htmlFor="">Green</label>
-                <input type="checkbox" name="black" id="" onClick={applyColor}/>
+                <input type="checkbox" name="Black" id="" onClick={applyColor}/>
                 <label htmlFor="">Black</label>
             </div>
             <div>Gender
