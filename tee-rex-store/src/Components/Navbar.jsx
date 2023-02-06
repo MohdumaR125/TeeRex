@@ -1,8 +1,11 @@
+import styles from "./Styles.module.css"
+
 const Navbar = () => {
 
     return(
         <>
-        <div>TeeRex Store</div>
+        <div className={styles.navbar}>
+		<div>TeeRex Store</div>
         <div>
             <button>Product</button>
             
@@ -24,6 +27,7 @@ const Navbar = () => {
 </g>
 </svg>
         </div>
+		</div>
         </>
     )
 }
